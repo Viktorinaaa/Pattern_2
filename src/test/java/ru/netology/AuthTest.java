@@ -43,7 +43,7 @@ class AuthTest {
         $x("//input[@name='login']").setValue(notRegisteredUser.getLogin());
         $x("//input[@type='password']").setValue(notRegisteredUser.getPassword());
         $x("//*[contains(@data-test-id,'action-login')]").click();
-        $x("//*[contains(@class,'notification__content')]").shouldHave(exactText("Ошибка! " +
+        $("[data-test-id=error-notification] .notification__content").shouldHave(exactText("Ошибка! " +
                 "Неверно указан логин или пароль"));
     }
 
@@ -80,7 +80,7 @@ class AuthTest {
         $x("//input[@name='login']").setValue(registeredUser.getLogin());
         $x("//input[@type='password']").setValue(wrongPassword);
         $x("//*[contains(@data-test-id,'action-login')]").click();
-        $x("//*[contains(@class,'notification__content')]").shouldHave(exactText("Ошибка! " +
+        $("[data-test-id=error-notification] .notification__content").shouldBe(exactText("Ошибка! " +
                 "Неверно указан логин или пароль"));
     }
 }
