@@ -54,7 +54,8 @@ class AuthTest {
         $x("//input[@name='login']").setValue(blockedUser.getLogin());
         $x("//input[@type='password']").setValue(blockedUser.getPassword());
         $x("//*[contains(@data-test-id,'action-login')]").click();
-        $("[data-test-id=error-notification] .notification__content").shouldBe(exactText("Ошибка! " + "Пользователь заблокирован"));
+        $("[data-test-id=error-notification] .notification__content").
+                shouldBe(exactText("Ошибка! " + "Пользователь заблокирован"));
     }
 
 
