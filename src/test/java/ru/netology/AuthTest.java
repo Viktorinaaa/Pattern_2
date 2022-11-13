@@ -2,6 +2,7 @@ package ru.netology;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,6 +24,12 @@ class AuthTest {
     void setup() {
         open("http://localhost:9999");
         Configuration.holdBrowserOpen = true;
+    }
+
+    @AfterEach
+    void memoryClear() {
+        clearBrowserCookies();
+        clearBrowserLocalStorage();
     }
 
     @Test
